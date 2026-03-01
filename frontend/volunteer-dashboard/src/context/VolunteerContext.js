@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const VolunteerContext = createContext();
 
@@ -11,15 +11,24 @@ export const useVolunteer = () => {
 };
 
 export const VolunteerProvider = ({ children }) => {
-  const [volunteerData, setVolunteerData] = useState({
-    name: 'Priya Sharma',
-    role: 'Volunteer',
-    status: 'online',
-    engagementRate: 85,
-    taskCompletion: 90,
-    trainingCompletion: 75,
-    feedbackScore: 4.5
-  });
+  // Get volunteer data from sessionStorage or localStorage
+  const getStoredVolunteerData = () => {
+    const storedName = sessionStorage.getItem('userName') || localStorage.getItem('userName');
+    const storedEmail = sessionStorage.getItem('userEmail') || localStorage.getItem('userEmail');
+    
+    return {
+      name: storedName || 'Volunteer',
+      role: 'Volunteer',
+      status: 'online',
+      engagementRate: 85,
+      taskCompletion: 90,
+      trainingCompletion: 75,
+      feedbackScore: 4.5,
+      email: storedEmail || 'volunteer@vaani.gov.in'
+    };
+  };
+
+  const [volunteerData, setVolunteerData] = useState(getStoredVolunteerData());
 
   const [isOnline, setIsOnline] = useState(true);
 
@@ -31,8 +40,35 @@ export const VolunteerProvider = ({ children }) => {
     }));
   };
 
+  const handleLogout = () => {
+    // Clear any stored user data
+    sessionStorage.clear();
+    localStorage.clear();
+    // Redirect to main frontend homepage (port 5173) and replace history
+    window.location.replace('http://localhost:5173/');
+  };
+
+  // Update volunteerData when storage changes
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setVolunteerData(getStoredVolunteerData());
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    
+    // Check for updates on mount
+    const updatedData = getStoredVolunteerData();
+    if (updatedData.name !== volunteerData.name || updatedData.email !== volunteerData.email) {
+      setVolunteerData(updatedData);
+    }
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
+
   return (
-    <VolunteerContext.Provider value={{ volunteerData, isOnline, toggleStatus }}>
+    <VolunteerContext.Provider value={{ volunteerData, setVolunteerData, isOnline, toggleStatus, handleLogout }}>
       {children}
     </VolunteerContext.Provider>
   );

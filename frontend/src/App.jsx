@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { AuthProvider } from './context/AuthContext'
 import Navbar from './components/Navbar'
 import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
@@ -19,7 +20,8 @@ import ArticlePage from './pages/ArticlePage'
 
 function App() {
   return (
-    <Router>
+    <AuthProvider>
+      <Router>
       <div className="relative min-h-screen overflow-hidden">
         {/* Content */}
         <div className="relative z-10">
@@ -45,10 +47,14 @@ function App() {
             <Route path="/feedback" element={<FeedbackPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
+            
+            {/* Catch-all route - redirect any unknown path to home */}
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>
       </div>
     </Router>
+    </AuthProvider>
   )
 }
 
