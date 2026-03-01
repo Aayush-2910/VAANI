@@ -94,6 +94,15 @@ const Navbar = () => {
     setShowNotifications(false);
   };
 
+  const handleLogout = () => {
+    console.log('Logging out...');
+    // Clear any stored user data
+    sessionStorage.clear();
+    localStorage.clear();
+    // Redirect to main frontend homepage (port 5173) and replace history
+    window.location.replace('http://localhost:5173/');
+  };
+
   const unreadCount = notifications.filter(n => !n.read).length;
 
   return (
@@ -213,7 +222,7 @@ const Navbar = () => {
                   <Activity size={16} />
                   <span>Activity Log</span>
                 </div>
-                <div className="profile-menu-item logout">
+                <div className="profile-menu-item logout" onClick={handleLogout}>
                   <X size={16} />
                   <span>Logout</span>
                 </div>

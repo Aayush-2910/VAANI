@@ -53,6 +53,11 @@ const Navbar = () => {
 
   const handleLogout = () => {
     console.log('Logging out...');
+    // Clear any stored user data
+    sessionStorage.clear();
+    localStorage.clear();
+    // Redirect to main frontend homepage (port 5173) and replace history
+    window.location.replace('http://localhost:5173/');
   };
 
   return (

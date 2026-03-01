@@ -11,12 +11,20 @@ export const useUser = () => {
 };
 
 export const UserProvider = ({ children }) => {
-  const [userData, setUserData] = useState({
-    name: 'Aayush',
-    email: 'aayush@vaani.gov.in',
-    role: 'User',
-    avatar: 'A'
-  });
+  // Get user data from sessionStorage or localStorage
+  const getStoredUserData = () => {
+    const storedName = sessionStorage.getItem('userName') || localStorage.getItem('userName');
+    const storedEmail = sessionStorage.getItem('userEmail') || localStorage.getItem('userEmail');
+    
+    return {
+      name: storedName || 'User',
+      email: storedEmail || 'user@vaani.gov.in',
+      role: 'User',
+      avatar: storedName ? storedName.charAt(0).toUpperCase() : 'U'
+    };
+  };
+
+  const [userData, setUserData] = useState(getStoredUserData());
 
   const [systemStatus, setSystemStatus] = useState({
     online: true,
@@ -33,6 +41,25 @@ export const UserProvider = ({ children }) => {
     return 'Good Evening';
   };
 
+  // Update userData when storage changes
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setUserData(getStoredUserData());
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    
+    // Check for updates on mount
+    const updatedData = getStoredUserData();
+    if (updatedData.name !== userData.name || updatedData.email !== userData.email) {
+      setUserData(updatedData);
+    }
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
+
   useEffect(() => {
     // Simulate real-time updates
     const interval = setInterval(() => {
@@ -45,7 +72,9 @@ export const UserProvider = ({ children }) => {
   return (
     <UserContext.Provider value={{ 
       userData, 
+      setUserData,
       systemStatus, 
+      setSystemStatus,
       notifications, 
       setNotifications,
       getGreeting 

@@ -1,4 +1,4 @@
-import animationVideo from '../assets/animation.mp4'
+import posterImage from '../assets/poster.png'
 
 function VideoSection() {
   return (
@@ -10,18 +10,13 @@ function VideoSection() {
       </div>
 
       <div className="relative z-10 flex flex-col lg:flex-row items-center gap-12">
-        {/* Video Container with Capsule Shape on Right - Aligned Left */}
+        {/* Image Container with Capsule Shape on Right - Aligned Left */}
         <div className="overflow-hidden shadow-2xl border-4 border-white/10 h-[400px] md:h-[500px] max-w-4xl flex-shrink-0" style={{ borderRadius: '1.5rem 15rem 15rem 1.5rem' }}>
-          <video 
+          <img 
+            src={posterImage}
+            alt="VAANI Platform"
             className="w-full h-full object-cover"
-            autoPlay 
-            loop 
-            muted 
-            playsInline
-          >
-            <source src={animationVideo} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          />
         </div>
 
         {/* Text Content on Right */}
