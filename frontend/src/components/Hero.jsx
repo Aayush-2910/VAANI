@@ -43,7 +43,7 @@ Vaani transforms complex processes into simple conversations.
               {/* Glow effect behind */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 blur-xl opacity-75 animate-pulse -z-10"></div>
               <img 
-                src="/src/assets/new.png" 
+                src="https://vaani-storage.s3.eu-north-1.amazonaws.com/assets/Vaani-images/new.png" 
                 alt="AI Assistant"
                 className="w-full h-full object-cover rounded-3xl  relative z-10"
               />

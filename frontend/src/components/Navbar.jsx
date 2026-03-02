@@ -1,6 +1,4 @@
 import { Link, useLocation } from 'react-router-dom'
-import logo from '../assets/logo.png'
-import mainlogo from '../assets/mainlogo.png'
 
 function Navbar() {
   const location = useLocation()
@@ -11,7 +9,7 @@ function Navbar() {
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-3">
           <div className=" flex items-center justify-center">
-            <img src={mainlogo} alt="Vaani Logo" className=" h-full w-20 object-cover" />
+            <img src="https://vaani-storage.s3.eu-north-1.amazonaws.com/assets/Vaani-images/mainlogo.png" alt="Vaani Logo" className=" h-full w-20 object-cover" />
           </div>
         </Link>
 

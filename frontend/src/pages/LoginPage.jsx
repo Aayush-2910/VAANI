@@ -1,7 +1,5 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import blackLogo from '../assets/blacklogo.png'
-import jaihoImage from '../assets/jaiho.jpeg'
 import { loginWithEmail, loginWithGoogle, setupRecaptcha, sendOTP, verifyOTP } from '../services/authService'
 
 function LoginPage() {
@@ -136,7 +134,7 @@ function LoginPage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img 
-            src={jaihoImage} 
+            src="https://vaani-storage.s3.eu-north-1.amazonaws.com/assets/Vaani-images/jaiho.jpeg"
             alt="Background"
             className="w-full h-full object-cover"
           />
@@ -149,7 +147,7 @@ function LoginPage() {
           {/* Logo */}
           <div className="flex justify-center mb-1">
             <img 
-              src={blackLogo} 
+              src="https://vaani-storage.s3.eu-north-1.amazonaws.com/assets/Vaani-images/blacklogo.png"
               alt="Vaani Logo" 
               className="h-36 h-36 object-cover"
             />

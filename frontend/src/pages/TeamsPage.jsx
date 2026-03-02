@@ -7,7 +7,7 @@ function TeamsPage() {
       name: "Shiva Kewat",
       role: "Frontend Developer - UI/UX",
       bio: "Leading UI/UX development with 10+ years in Web Development",
-      image: "/src/assets/Images/p1.jpeg",
+      image: "https://vaani-storage.s3.eu-north-1.amazonaws.com/assets/Vaani-images/Images/p1.jpeg",
       socials: [
         { icon: "linkedin", url: "#" },
         { icon: "twitter", url: "#" },
@@ -18,7 +18,7 @@ function TeamsPage() {
       name: "Aayush Pandey",
       role: "Backend Developer — API Systems Architect",
       bio: "Building scalable infrastructure for millions of voice interactions daily",
-      image:  "/src/assets/Images/p2.jpeg",
+      image:  "https://vaani-storage.s3.eu-north-1.amazonaws.com/assets/Vaani-images/Images/p2.jpeg",
       socials: [
         { icon: "linkedin", url: "#" },
         { icon: "twitter", url: "#" },
@@ -29,7 +29,7 @@ function TeamsPage() {
       name: "Roshan Kumar Singh",
       role: "UI Designer — Accessibility Expert",
       bio: "Crafting inclusive experiences that work for everyone, everywhere",
-      image:  "/src/assets/Images/p3.jpeg",
+      image:  "https://vaani-storage.s3.eu-north-1.amazonaws.com/assets/Vaani-images/Images/p3.jpeg",
       socials: [
         { icon: "linkedin", url: "#" },
         { icon: "twitter", url: "#" },

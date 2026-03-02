@@ -110,7 +110,7 @@ function ChatbotWidget() {
         aria-label="Open chat"
       >
         <img 
-          src="/src/assets/Images/aibot.png" 
+          src="https://vaani-storage.s3.eu-north-1.amazonaws.com/assets/Vaani-images/Images/aibot.png" 
           alt="AI Bot"
           className="w-36 h-48 object-contain"
         />

@@ -12,7 +12,7 @@ function CTABanner() {
         </div>
         <div className="flex-shrink-0">
           <img 
-            src="/src/assets/calls2.jpeg" 
+            src="https://vaani-storage.s3.eu-north-1.amazonaws.com/assets/Vaani-images/calls2.jpeg" 
             alt="Friendly illustration"
             className="w-full max-w-[400px] mx-auto rounded-2xl border-4 border-[#178F82] shadow-2xl"
           />
